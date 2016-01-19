@@ -2,16 +2,8 @@
 
 {{outlet}}
 
-{{mu-login}}
-
 {{#if session.isAuthenticated}}
-  {{debugger}}
-  You're in!
+  {{mu-logout}}
   {{else}}
-  {{debugger}}
-  You're out :(
-{{/if}}
-
-{{#if session}}
-  {{debugger}}
-{{/if}}
+  {{mu-login}}
+{{/if}}  
