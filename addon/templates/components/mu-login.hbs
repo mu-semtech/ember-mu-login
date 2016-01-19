@@ -1,35 +1,11 @@
-<div class="login-table row">
-  <div class="login-table-cell">
-  <div class="col s12 z-depth-4 card-panel">
-    <form class="login-form" {{action "login" on="submit"}}>
-        <div class="row">
-          <div class="input-field col s12 center">
-            <img src="assets/images/logo.jpg" alt="" class="circle responsive-img valign logo">
-          </div>
-        </div>
-	<div class="row">
-	  {{#if errorMessage}}
-	    {{#md-card-panel class="orange" bodyClass="white-text"}}
-	      {{errorMessage}}
-	    {{/md-card-panel}}
-	  {{/if}}
-	</div>
-        <div class="row">
-          <div class="col s12">
-	    {{md-input value=model.nickname label="Gebruikersnaam" icon="mdi-social-person-outline"}}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s12">
-	    {{md-input value=model.password label="Wachtwoord" type="password" icon="mdi-action-lock-outline"}}
-          </div>
-        </div>
-        <div class="row">
-          <div class="col s12">
-	    {{md-btn-submit text='Login' class="col s12 green"}}
-          </div>
-        </div>
-      </form>
+<form class="login-form" {{action "login" on="submit"}}>
+  <div class="login-form-name">
+    <label>Username</label>
+    {{input value=nickname placeholder="john.doe"}}
   </div>
+  <div class="login-form-password">
+    <label>Password</label>
+    {{input value=password type="password"}}
   </div>
-</div>
+  <button>Login</button>
+</form>

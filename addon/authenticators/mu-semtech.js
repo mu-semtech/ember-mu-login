@@ -1,11 +1,12 @@
 import Ember from 'ember';
-import Base from 'simple-auth/authenticators/base';
+import Base from 'ember-simple-auth/authenticators/base';
 
 export default Base.extend({
 
   basePath: Ember.computed(function() {
-    var applicationConfig = this.container.lookup('config:environment');
-    return applicationConfig.muSessionBasePath || '/sessions';
+    // var applicationConfig = this.container.lookup('config:environment');
+    // return applicationConfig.muSessionBasePath || '/sessions';
+    return '/sessions';
   }),
 
   
@@ -14,7 +15,7 @@ export default Base.extend({
   },
 
   authenticate(options) {
-    Ember.$.ajax({
+    return Ember.$.ajax({
       url: this.get('basePath'),
       type: 'POST',
       dataType: 'json',
@@ -26,15 +27,15 @@ export default Base.extend({
           type: 'sessions',
           attributes: {
             nickname: options['nickname'],
-	    password: options['password']
-	  }
-	}
+	        password: options['password']
+	      }
+	    }
       })
     });
   },
 
   invalidate() {
-    Ember.$.ajax({
+    return Ember.$.ajax({
       url: this.get('basePath') + '/current',
       type: 'DELETE',
       headers: {

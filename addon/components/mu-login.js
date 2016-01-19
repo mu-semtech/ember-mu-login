@@ -4,6 +4,7 @@ import layout from '../templates/components/mu-login';
 export default Ember.Component.extend({
   layout: layout,
   session: Ember.inject.service('session'),
+  classNames: ['mu-login'],
   didInsertElement() {
     Ember.$('body').addClass('login-body');
   },
