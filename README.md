@@ -24,16 +24,3 @@ This README outlines the details of collaborating on this Ember addon.
 * `ember build`
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
-
-## Graveyard
-```
-    sessionAuthenticationSucceeded() {
-      console.log('Login succeeded');
-      return true;
-    },
-    sessionAuthenticationFailed(error) {
-      console.log('Login failed');
-      message = JSON.parse(error.responseText).errors[0].title;
-      this.set('controller.errorMessage', message);
-    }
-```
