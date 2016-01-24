@@ -1,12 +1,11 @@
 import Ember from 'ember';
 import Base from 'ember-simple-auth/authenticators/base';
+import Configuration from './../configuration';
 
 export default Base.extend({
 
   basePath: Ember.computed(function() {
-    // var applicationConfig = this.container.lookup('config:environment');
-    // return applicationConfig.muSessionBasePath || '/sessions';
-    return '/sessions';
+    return Configuration.sessionBasePath;
   }),
 
   
