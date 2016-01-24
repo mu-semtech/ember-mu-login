@@ -4,14 +4,11 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 export default Ember.Route.extend( ApplicationRouteMixin, {
   init() {
     this._super();
-    alert("Hello sir");
   },
-  actions: {
-    authenticationSucceeded(){
-      alert("Got authenticated");
-    },
-    invalidationSucceeded(){
-      alert("Got invalitated");
-    }
+  sessionAuthenticated(){
+    alert('Got authenticated!');
+  },
+  sessionInvalidated(){
+    alert('Got invalidated');
   }
 } );
