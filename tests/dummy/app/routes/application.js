@@ -7,8 +7,10 @@ export default Ember.Route.extend( ApplicationRouteMixin, {
   },
   sessionAuthenticated(){
     alert('Got authenticated!');
+    this._super.call(this);
   },
   sessionInvalidated(){
     alert('Got invalidated');
+    this._super.call(this);
   }
 } );
