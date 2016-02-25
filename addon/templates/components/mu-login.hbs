@@ -1,6 +1,3 @@
-<div class="error-message">
-  {{errorMessage}}
-</div>
 <form class="login-form" {{action "login" on="submit"}}>
   <div class="login-form-name">
     <label>Username</label>
@@ -10,5 +7,14 @@
     <label>Password</label>
     {{input value=password type="password"}}
   </div>
-  <button>Login</button>
+	<div class="feedback-message">
+		{{#if loading}}
+			<span class="loading">Verifying credentials</span>
+		{{/if}}
+		{{#if errorMessage}}
+			<span class="error-message">{{errorMessage}}</span>
+		{{/if}}
+	</div>
+	
+  <button disabled={{loading}}>Login</button>
 </form>
