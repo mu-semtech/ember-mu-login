@@ -9,8 +9,18 @@ export default Base.extend({
   }),
 
   
-  restore() {
-    return Ember.RSVP.reject();
+  restore(data) {
+		var obj, verifyData;
+		obj = Ember.Object.create(data);
+		verifyData = function(resolve, reject) {
+				if (! Ember.isEmpty(obj.get("data.id")) && obj.get("data.type") === "sessions") {
+						resolve(data);
+				}
+				else {
+						reject();
+				}
+		};
+		return new Ember.RSVP.Promise(verifyData)
   },
 
   authenticate(options) {
