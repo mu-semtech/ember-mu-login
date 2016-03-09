@@ -1,6 +1,6 @@
 {
   "name": "ember-mu-login",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Default ember component for mu-login-service.  See http://mu.semte.ch/.",
   "directories": {
     "doc": "doc",
