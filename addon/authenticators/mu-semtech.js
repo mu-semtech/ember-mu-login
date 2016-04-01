@@ -8,19 +8,17 @@ export default Base.extend({
     return Configuration.sessionBasePath;
   }),
 
-  
   restore(data) {
-		var obj, verifyData;
-		obj = Ember.Object.create(data);
-		verifyData = function(resolve, reject) {
-				if (! Ember.isEmpty(obj.get("data.id")) && obj.get("data.type") === "sessions") {
-						resolve(data);
-				}
-				else {
-						reject();
-				}
-		};
-		return new Ember.RSVP.Promise(verifyData)
+    return Ember.$.ajax({
+      url: this.get('basePath') + "/current",
+      type: 'GET',
+      dataType: 'json',
+      headers: {
+        'Content-Type': 'application/vnd.api+json'
+      }
+    }).then(function(){
+      return data;
+    });
   },
 
   authenticate(options) {
