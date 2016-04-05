@@ -4,5 +4,6 @@ import MuLoginMixin from 'ember-mu-login/mixins/mu-login';
 
 export default Ember.Component.extend(MuLoginMixin, {
   layout: layout,
+  placeholder: "john.doe"
   classNames: ['mu-login']
 });
