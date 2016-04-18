@@ -2,6 +2,12 @@
 
 This addon provides a mu-login and mu-logout component for the [mu-login microservice](https://github.com/mu-semtech/login-service). 
 
+## Installation
+```
+ember install ember-mu-login
+ember install ember-simple-auth
+```
+
 ## Basic usage
 Just include the `{{mu-login}}` or `{{mu-logout}}` component in your template.
 
