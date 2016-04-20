@@ -5,7 +5,6 @@ This addon provides a mu-login and mu-logout component for the [mu-login microse
 ## Installation
 ```
 ember install ember-mu-login
-ember install ember-simple-auth
 ```
 
 ## Basic usage
