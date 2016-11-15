@@ -4,7 +4,7 @@ import Configuration from './../configuration';
 
 export default Base.extend({
   ajax: Ember.inject.service(),
-  
+
   basePath: Ember.computed(function() {
     return Configuration.sessionBasePath;
   }),
@@ -33,9 +33,9 @@ export default Base.extend({
           type: 'sessions',
           attributes: {
             nickname: options['nickname'],
-	    password: options['password']
-	  }
-	}
+	          password: options['password']
+	        }
+	      }
       })
     });
   },
