@@ -12,11 +12,11 @@ export default Ember.Mixin.create({
         this.set('loading', false);
       }).catch((reason) => {
         this.set('loading', false);
-        if (reason.errors[0].status === '0') {
+        if (reason.payload.errors[0].status === '0') {
           this.set('errorMessage', 'Failed to connect to server');
         }
         else if (isBadRequestError(reason)) {
-          var error = reason.errors[0].title;
+          var error = reason.payload.errors[0].title;
           this.set('errorMessage', error);
         }
         else {

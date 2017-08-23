@@ -33,9 +33,9 @@ export default Base.extend({
           type: 'sessions',
           attributes: {
             nickname: options['nickname'],
-	          password: options['password']
-	        }
-	      }
+            password: options['password']
+          }
+        }
       })
     });
   },
