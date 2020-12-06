@@ -49,7 +49,7 @@ export default class MuSemtechAuthenticator extends Base {
     }
   }
 
-  async invalidate(data) {
+  async invalidate() {
     const result = await fetch(`${this.basePath}/current`, {
       method: 'DELETE',
       headers: new Headers({
