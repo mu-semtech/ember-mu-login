@@ -1,13 +1,17 @@
 {
   "name": "ember-mu-login",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Ember components for mu-login-service.",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "mu-semtech"
   ],
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mu-semtech/ember-mu-login"
+  },
   "license": "MIT",
-  "author": "",
+  "author": "Erika Pauwels <erika.pauwels@gmail.com>",
   "directories": {
     "doc": "doc",
     "test": "tests"
