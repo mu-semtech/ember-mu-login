@@ -1,0 +1,40 @@
+<form class="mu-login" {{on "submit" this.login}}>
+  <div class="mu-login-name">
+    <label for="mu-login-username">Username</label>
+    <Input
+      @id="mu-login-username"
+      @value={{this.nickname}}
+      placeholder={{@placeholder}} />
+  </div>
+  <div class="mu-login-password">
+    <label for="mu-login-password">Password</label>
+    <Input
+      @id="mu-login-password"
+      @value={{this.password}}
+      type="password" />
+  </div>
+  <div class="feedback-message">
+    {{#if this.isAuthenticating}}
+      <div class="mu-login-authenticating">
+        Verifying credentials
+      </div>
+    {{/if}}
+    {{#if this.errorMessage}}
+      <div class="mu-login-error-message">
+        {{this.errorMessage}}
+      </div>
+    {{/if}}
+  </div>
+  {{#if this.isAuthenticating}}
+    <button type="submit"
+      disabled={{true}}
+      class="mu-login-button">
+      {{this.label}}
+    </button>
+  {{else}}
+    <button type="submit"
+      class="mu-login-button">
+      {{this.label}}
+    </button>
+  {{/if}}
+</form>
