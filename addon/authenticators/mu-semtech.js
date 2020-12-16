@@ -13,6 +13,7 @@ export default class MuSemtechAuthenticator extends Base {
     const result = await fetch(this.basePath, {
       method: 'POST',
       headers: new Headers({
+        Accept: 'application/vnd.api+json',
         'Content-Type': 'application/vnd.api+json'
       }),
       body: JSON.stringify({
@@ -38,6 +39,7 @@ export default class MuSemtechAuthenticator extends Base {
     const result = await fetch(`${this.basePath}/current`, {
       method: 'GET',
       headers: new Headers({
+        Accept: 'application/vnd.api+json',
         'Content-Type': 'application/vnd.api+json'
       })
     });
@@ -53,6 +55,7 @@ export default class MuSemtechAuthenticator extends Base {
     const result = await fetch(`${this.basePath}/current`, {
       method: 'DELETE',
       headers: new Headers({
+        Accept: 'application/vnd.api+json',
         'Content-Type': 'application/vnd.api+json'
       })
     });
