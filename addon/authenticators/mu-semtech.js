@@ -35,13 +35,16 @@ export default class MuSemtechAuthenticator extends Base {
     }
   }
 
-  async restore(data) {
+  async restore(/* data */) {
+    const headers = new Headers({
+      Accept: 'application/vnd.api+json',
+      'Content-Type': 'application/vnd.api+json'
+    });
+
+    this.enrichHeadersOnFastboot(headers);
     const result = await fetch(`${this.basePath}/current`, {
       method: 'GET',
-      headers: new Headers({
-        Accept: 'application/vnd.api+json',
-        'Content-Type': 'application/vnd.api+json'
-      })
+      headers
     });
 
     if (result.ok) {
@@ -52,17 +55,30 @@ export default class MuSemtechAuthenticator extends Base {
   }
 
   async invalidate() {
+    const headers = new Headers({
+      Accept: 'application/vnd.api+json',
+      'Content-Type': 'application/vnd.api+json'
+    });
+    this.enrichHeadersOnFastboot(headers);
+
     const result = await fetch(`${this.basePath}/current`, {
       method: 'DELETE',
-      headers: new Headers({
-        Accept: 'application/vnd.api+json',
-        'Content-Type': 'application/vnd.api+json'
-      })
+      headers
     });
 
     if (result.ok)
       return result;
     else
       throw result;
+  }
+
+  enrichHeadersOnFastboot(headers) {
+    // note we don't inject the service because we also support apps without fastboot
+    const fastboot = getOwner(this).lookup('service:fastboot');
+    if (fastboot && fastboot.isFastBoot) {
+      const fastbootHeaders = fastboot.request.headers;
+      // note that this only works on fastboot, cookie is a forbidden header in the browser
+      headers.append('Cookie', fastbootHeaders.get('Cookie'));
+    }
   }
 }
