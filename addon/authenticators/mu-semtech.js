@@ -14,17 +14,17 @@ export default class MuSemtechAuthenticator extends Base {
       method: 'POST',
       headers: new Headers({
         Accept: 'application/vnd.api+json',
-        'Content-Type': 'application/vnd.api+json'
+        'Content-Type': 'application/vnd.api+json',
       }),
       body: JSON.stringify({
         data: {
           type: 'sessions',
           attributes: {
             nickname: options['nickname'],
-            password: options['password']
-          }
-        }
-      })
+            password: options['password'],
+          },
+        },
+      }),
     });
 
     if (result.ok) {
@@ -38,13 +38,13 @@ export default class MuSemtechAuthenticator extends Base {
   async restore(/* data */) {
     const headers = new Headers({
       Accept: 'application/vnd.api+json',
-      'Content-Type': 'application/vnd.api+json'
+      'Content-Type': 'application/vnd.api+json',
     });
 
     this.enrichHeadersOnFastboot(headers);
     const result = await fetch(`${this.basePath}/current`, {
       method: 'GET',
-      headers
+      headers,
     });
 
     if (result.ok) {
@@ -57,19 +57,17 @@ export default class MuSemtechAuthenticator extends Base {
   async invalidate() {
     const headers = new Headers({
       Accept: 'application/vnd.api+json',
-      'Content-Type': 'application/vnd.api+json'
+      'Content-Type': 'application/vnd.api+json',
     });
     this.enrichHeadersOnFastboot(headers);
 
     const result = await fetch(`${this.basePath}/current`, {
       method: 'DELETE',
-      headers
+      headers,
     });
 
-    if (result.ok)
-      return result;
-    else
-      throw result;
+    if (result.ok) return result;
+    else throw result;
   }
 
   enrichHeadersOnFastboot(headers) {
