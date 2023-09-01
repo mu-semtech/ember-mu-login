@@ -11,11 +11,29 @@ ember install ember-simple-auth
 ember install ember-mu-login
 ```
 
-Make sure to use ember-simple-auth >= v3.1.0-beta.0
+Make sure to use ember-simple-auth >= v6.0.0
+
+As part of installing `ember-simple-auth` it's necessary to set-up the session service, so somewhere
+near the root of your app, inject the service and call `setup()` on it. For example:
+
+``` js
+// app/routes/application.js
+import Route from '@ember/routing/route'
+import { service } from '@ember/service'
+
+export default class ApplicationRoute extends Route {
+  @service session
+
+  async beforeModel(...args) {
+    await this.session.setup()
+    return super.beforeModel(...args)
+  }
+}
+```
 
 After installation, include the `<MuLogin />` and `<MuLogout />` component somewhere in your template(s).
 
-Have a look at the [ember-simple-auth addon](https://github.com/simplabs/ember-simple-auth#walkthrough) to understand how to protect your routes. The session authentication/invalidation is already handled by this addon.
+Have a look at the [ember-simple-auth addon](https://github.com/mainmatter/ember-simple-auth#walkthrough) to understand how to protect your routes. The session authentication/invalidation is already handled by this addon.
 
 ### Customize the components layout
 If you want to customize the layout of the `MuLogin` and/or `MuLogout` component, you will need to extend those components. This tutorial explains customization of the `MuLogin` component, but the process for `MuLogout` is similar.
