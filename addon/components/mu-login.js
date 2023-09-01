@@ -43,7 +43,7 @@ export default class MuLoginComponent extends Component {
         password: this.password,
       });
     } catch (e) {
-      warn(JSON.stringify(e), { id: 'authentication.failure' });
+      warn(e.message || JSON.stringify(e), { id: 'authentication.failure' });
 
       if (e.errors && e.errors.length && e.errors[0].title) {
         this.errorMessage = e.errors[0].title;
