@@ -26,7 +26,6 @@ export default class ApplicationRoute extends Route {
 
   async beforeModel(...args) {
     await this.session.setup()
-    return super.beforeModel(...args)
   }
 }
 ```
@@ -54,9 +53,6 @@ export default class MyMuLoginComponent extends MuLoginComponent {
 ```
 
 You can now customize the generated `app/components/mu-login.hbs` file as needed. The login action can be triggered using `{{on "click" this.login}}`. Have a look at the `MuLogin`-component documentation for all options.
-
-## Tutorials
-A tutorial using this repository can be found at https://github.com/mu-semtech/mu-project#adding-authentication-to-your-mu-project
 
 ## Reference
 ### Components
