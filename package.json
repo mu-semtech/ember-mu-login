@@ -1,6 +1,6 @@
 {
   "name": "ember-mu-login",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "description": "Ember components for mu-login-service.",
   "keywords": [
     "ember-addon",
