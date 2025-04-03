@@ -7,6 +7,10 @@ export default class MuSemtechAuthenticator extends Base {
     super(...arguments);
     const config = getOwner(this).resolveRegistration('config:environment');
     this.basePath = config['basePath'] || '/sessions';
+
+    if (this.isFastboot() && config['fastbootBasePath']) {
+      this.basePath = config['fastbootBasePath'];
+    }
   }
 
   async authenticate(options) {
@@ -71,12 +75,20 @@ export default class MuSemtechAuthenticator extends Base {
   }
 
   enrichHeadersOnFastboot(headers) {
-    // note we don't inject the service because we also support apps without fastboot
-    const fastboot = getOwner(this).lookup('service:fastboot');
-    if (fastboot && fastboot.isFastBoot) {
-      const fastbootHeaders = fastboot.request.headers;
+    if (this.isFastboot()) {
+      const fastbootHeaders = this.getFastboot().request.headers;
       // note that this only works on fastboot, cookie is a forbidden header in the browser
       headers.append('Cookie', fastbootHeaders.get('Cookie'));
     }
+  }
+
+  isFastboot() {
+    const fastboot = this.getFastboot();
+    return fastboot && fastboot.isFastBoot;
+  }
+
+  getFastboot() {
+    // note we don't inject the service because we also support apps without fastboot
+    return getOwner(this).lookup('service:fastboot');
   }
 }
