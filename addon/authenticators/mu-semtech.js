@@ -1,5 +1,4 @@
 import Base from 'ember-simple-auth/authenticators/base';
-import fetch, { Headers } from 'fetch';
 import { getOwner } from '@ember/application';
 
 export default class MuSemtechAuthenticator extends Base {
